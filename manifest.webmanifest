@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Law Trace 法痕律迹 · 基层法治工作台",
+  "short_name": "法痕律迹",
+  "description": "面向基层社会治理的法治工作台：三方调解模拟、私人法律顾问、法律文书生成、社区风险雷达。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./?sharecode=LQSAHBTIYJ",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#FBF6EE",
+  "theme_color": "#8E161E",
+  "categories": ["government", "productivity", "utilities"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

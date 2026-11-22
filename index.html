@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Law Trace 法痕律迹 · 基层法治工作台</title>
+<meta name="description" content="法痕律迹：面向基层社会治理的法治工作台。三方调解模拟器、私人法律顾问、法律文书生成、社区风险雷达，从一句抱怨到一份可执行的协议。" />
+<meta name="theme-color" content="#8E161E" />
+<meta name="color-scheme" content="light" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="法痕律迹" />
+<link rel="manifest" href="manifest.webmanifest?sharecode=LQSAHBTIYJ" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="assets/icons/icon-64.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/icon-180.png" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.4 12 3l9 7.4"/><path d="M5.6 9.4V21h12.8V9.4"/><path d="M9.8 21v-6h4.4v6"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v17"/><path d="M7.5 20.5h9"/><path d="M4 7.5h16"/><path d="M4 7.5 1.9 12.4a2.8 2.8 0 0 0 5.2 0L5 7.5"/><path d="M20 7.5l-2.1 4.9a2.8 2.8 0 0 0 5.2 0L21 7.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.5a7.5 7.5 0 0 1-7.5 7.5H8l-4.5 2.5v-5A7.5 7.5 0 0 1 11 4h2a7.5 7.5 0 0 1 7.5 7.5z"/><path d="M8.8 11h.01M12 11h.01M15.2 11h.01"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.8h8l5 5V21H6z"/><path d="M14 2.8v5.4h5"/><path d="M9 13h7M9 17h5"/></symbol>
+    <symbol id="i-radar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.6"/><path d="m12 12 6.4-6.4"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-7 18-3-7-8-3z"/><path d="m11 14 4-4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.2 2.7-5.4 6-5.4s6 2.2 6 5.4"/><path d="M16 5.2a3 3 0 0 1 0 5.6"/><path d="M17.5 14.8c2.1.5 3.5 2.2 3.5 4.4"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.8 20h18.4z"/><path d="M12 9v5M12 17.2h.01"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.4l3.4 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6c0 4.8 3.2 7.8 7.5 9 4.3-1.2 7.5-4.2 7.5-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3.6M12 17.4V21M3 12h3.6M17.4 12H21M5.6 5.6l2.6 2.6M15.8 15.8l2.6 2.6M18.4 5.6l-2.6 2.6M8.2 15.8l-2.6 2.6"/><circle cx="12" cy="12" r="2.4"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3.6"/><path d="M12 3v4"/><circle cx="9" cy="13" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1.1" fill="currentColor" stroke="none"/><path d="M9.5 16.2h5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.9a5.1 5.1 0 0 0-7.2 0L12 7.5l-1.6-1.6a5.1 5.1 0 0 0-7.2 7.2L12 21l8.8-7.9a5.1 5.1 0 0 0 0-7.2z"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13.5a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1.4 1.4"/><path d="M14 10.5a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1.4-1.4"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5v7M14.5 8.5v7"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5.5L13 3v18"/><path d="M13 9h7v12"/><path d="M7.5 7.5h2M7.5 11h2M7.5 14.5h2M16 12.5h1M16 16h1M2 21h20"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12" rx="2.4"/><path d="M9 7.5V5.4A2.4 2.4 0 0 1 11.4 3h1.2A2.4 2.4 0 0 1 15 5.4v2.1M3 12.5h18M10 12.5v2h4v-2"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="5" width="18.4" height="14" rx="2.6"/><path d="M2.8 9.6h18.4M6.5 15h3.5"/></symbol>
+    <symbol id="i-elder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M8 21v-5.5L6 13"/><path d="M16 21v-5.5l2-2.5"/><path d="M8 12c1.2-1.4 2.4-2 4-2s2.8.6 4 2"/><path d="M17.5 6.5 20 9"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L13 19V5L7.5 9.5z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="8" r="1.8"/><circle cx="12" cy="6" r="1.8"/><circle cx="17" cy="8" r="1.8"/><circle cx="19" cy="13" r="1.6"/><path d="M8.5 14.5c1.5-2.4 5.5-2.4 7 0 1 1.7.2 4-1.8 4.4-1.2.3-2.2.1-2.7-.2-.5.3-1.5.5-2.7.2-2-.4-2.8-2.7-1.8-4.4z"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4"/><path d="m11 11 8.5 8.5M16 16l2-2M18.5 18.5l2-2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="5" width="18.4" height="14" rx="2.4"/><path d="m3.5 6.5 8.5 7 8.5-7"/></symbol>
+    <symbol id="i-fire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c3.6 0 6-2.4 6-5.6 0-2.3-1.2-4-2.6-5.6-.4 1.8-1.4 2.8-2.4 3.3.2-3.4-1.3-6.2-4-8.1.2 3.2-3 5.3-3 10.4C6 18.6 8.4 21 12 21z"/><path d="M12 21c1.6 0 2.7-1.1 2.7-2.6 0-1.4-1.2-2.2-2.7-3.9-1.5 1.7-2.7 2.5-2.7 3.9C9.3 19.9 10.4 21 12 21z"/></symbol>
+    <symbol id="i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m14 4 6 6M12.5 5.5l6 6M8 10l6 6M9.5 8.5l6 6"/><path d="m14.5 16.5-5 5M3 21h9"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5v13l10-6.5z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.6-4L3 10"/><path d="M3 4v6h6"/><path d="M4 13a8 8 0 0 0 14.6 4L21 14"/><path d="M21 20v-6h-6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5"/><path d="M4 19h16"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="13" rx="2.2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 7-2.5 7-2.5 8.5h17C20.5 16 18 16 18 9z"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5h12l4 4V21H4z"/><path d="M8 3.5v6h7v-6M8 21v-6h8v6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5h16M9 6.5V4h6v2.5M6.5 6.5 7.4 21h9.2l.9-14.5M10 10.5v6M14 10.5v6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10" width="15" height="11" rx="2.4"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.4"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h2M14 14h2M8 18h2"/></symbol>
+    <symbol id="i-wechat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4C5.4 4 2 6.8 2 10.3c0 2 1.1 3.8 2.9 5L4 18l3-1.6c.7.2 1.5.3 2.3.3"/><path d="M22 15.2c0-2.9-2.8-5.2-6.2-5.2S9.6 12.3 9.6 15.2s2.8 5.2 6.2 5.2c.7 0 1.4-.1 2-.3L21 21l-.7-2.2c1-1 1.7-2.3 1.7-3.6z"/><path d="M6.3 8.5h.01M12.4 8.5h.01"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H10a1.7 1.7 0 0 0 1-1.6V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V10a1.7 1.7 0 0 0 1.6 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v9.5A1.5 1.5 0 0 1 19.5 20h-15A1.5 1.5 0 0 1 3 18.5z"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2.5 2.5 0 0 1-2.7 2.5C10.3 19 5 13.7 4 5.7A2.5 2.5 0 0 1 6.5 3z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M8 6h8M8 10h6"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></symbol>
+  </defs>
+</svg>
+
+<div class="app-shell">
+  <div class="scrim" id="scrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#/home" aria-label="法痕律迹首页">
+      <span class="brand-mark"><img src="assets/icons/icon-64.png" alt="法痕律迹天平标志" /></span>
+      <span class="brand-text"><strong>法痕律迹</strong><em>LAW TRACE</em></span>
+      <span class="brand-ver">v4.2</span>
+    </a>
+
+    <nav class="nav" aria-label="主导航">
+      <p class="nav-label">工作台</p>
+      <a class="nav-item" data-route="home"><span class="nav-icon"><svg><use href="#i-home"/></svg></span><span>总览</span><i class="nav-idx">01</i></a>
+      <a class="nav-item" data-route="mediate"><span class="nav-icon"><svg><use href="#i-scale"/></svg></span><span>三方调解</span><i class="nav-idx">02</i></a>
+      <a class="nav-item" data-route="advisor"><span class="nav-icon"><svg><use href="#i-chat"/></svg></span><span>法律顾问</span><i class="nav-idx">03</i></a>
+      <a class="nav-item" data-route="docs"><span class="nav-icon"><svg><use href="#i-doc"/></svg></span><span>文书生成</span><i class="nav-idx">04</i></a>
+      <a class="nav-item" data-route="radar"><span class="nav-icon"><svg><use href="#i-radar"/></svg></span><span>风险雷达</span><span class="nav-live">LIVE</span></a>
+    </nav>
+
+    <div class="side-work">
+      <p class="nav-label">在办事项 <span id="sideWorkCount">0</span></p>
+      <div id="sideQueue" class="side-queue"></div>
+    </div>
+
+    <div class="sidebar-foot">
+      <div class="bot-status"><i class="pulse-dot"></i><span id="botStatusText">小律 · 待接入</span><b id="botWatchCount">0</b></div>
+      <div class="side-user">
+        <span class="avatar avatar-sm" id="sideAvatar">ZL</span>
+        <span class="u-meta"><b id="sideUserName">张琳</b><em id="sideUserRole">幸福里社区 · 调解员</em></span>
+        <button class="icon-btn icon-btn-quiet" data-open-settings aria-label="设置"><svg><use href="#i-settings"/></svg></button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="app-body">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="打开导航"><svg><use href="#i-menu"/></svg></button>
+      <div class="crumb"><span>法痕律迹</span><i>/</i><b id="crumb">总览</b></div>
+      <button class="top-search" id="topSearch"><svg><use href="#i-search"/></svg><span>搜索功能或快捷操作…</span><kbd>⌘ K</kbd></button>
+      <div class="topbar-right">
+        <span class="community-chip"><i></i><span id="communityChipText">幸福里社区</span></span>
+        <span class="today" id="todayLabel"></span>
+        <button class="icon-btn" id="installTop" data-install-app aria-label="安装到桌面" title="安装到桌面"><svg><use href="#i-download"/></svg></button>
+        <button class="icon-btn" id="bellBtn" aria-label="通知"><svg><use href="#i-bell"/></svg><b class="badge" style="display:none">0</b></button>
+        <span class="avatar" id="topAvatar">ZL</span>
+      </div>
+    </header>
+
+    <main class="viewport" id="viewport">
+
+      <!-- ================= 总览 ================= -->
+      <section class="view" id="view-home" data-view="home">
+        <div class="page-head home-head">
+          <div class="head-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span><span id="homeDate">2026年11月18日 星期三</span><span class="dot"></span>幸福里社区 · 法治工作台</p>
+            <h1 id="homeGreeting">上午好，张琳。</h1>
+            <p class="lede" id="homeLede">今天社区平安祥和，暂无待处置风险。<span id="homeBrief">愿邻里和顺，诸事安宁。</span></p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-ghost" id="homeReport"><svg><use href="#i-download"/></svg>今日法治日报</button>
+            <button class="btn btn-primary" data-go="mediate">开始调解<svg><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+
+        <div class="stat-grid" id="statGrid"></div>
+
+        <div class="home-grid">
+          <div class="home-main">
+            <section class="panel tool-panel">
+              <div class="panel-head">
+                <div><h2>四件工具，一条闭环</h2><p>情绪 → 释明 → 方案 → 文书 → 风险回流</p></div>
+                <span class="panel-note">一处留痕</span>
+              </div>
+              <div class="tool-grid">
+                <button class="tool-card" data-go="mediate">
+                  <span class="tool-top"><span class="tool-icon tone-gold"><svg><use href="#i-scale"/></svg></span><span class="tool-num">01</span></span>
+                  <b>三方调解模拟器</b><span>申请人、被申请人、调解员同台推演，预判对抗强度，找到可执行的让步区间。</span>
+                  <em><span>争议焦点</span><span>策略推演</span><span>协议输出</span></em>
+                  <i class="tool-arrow"><svg><use href="#i-arrow"/></svg></i>
+                </button>
+                <button class="tool-card" data-go="advisor">
+                  <span class="tool-top"><span class="tool-icon tone-jade"><svg><use href="#i-chat"/></svg></span><span class="tool-num">02</span></span>
+                  <b>私人法律顾问</b><span>需要共情时开启情绪安抚，需要结论时切换专业模式。每一次回答都给判断、依据与行动清单。</span>
+                  <em><span>情绪安抚</span><span>普法答疑</span><span>行动建议</span></em>
+                  <i class="tool-arrow"><svg><use href="#i-arrow"/></svg></i>
+                </button>
+                <button class="tool-card" data-go="docs">
+                  <span class="tool-top"><span class="tool-icon tone-blue"><svg><use href="#i-doc"/></svg></span><span class="tool-num">03</span></span>
+                  <b>一键生成文书</b><span>调解协议、律师函、仲裁申请、起诉状，要素校验与法条引用一次到位。</span>
+                  <em><span>要素校验</span><span>规范排版</span><span>导出打印</span></em>
+                  <i class="tool-arrow"><svg><use href="#i-arrow"/></svg></i>
+                </button>
+                <button class="tool-card" data-go="radar">
+                  <span class="tool-top"><span class="tool-icon tone-red"><svg><use href="#i-radar"/></svg></span><span class="tool-num">04</span></span>
+                  <b>社区风险雷达</b><span>小律接入业主群，实时听、实时判。左边是群聊，右边是风险与处置建议。</span>
+                  <em><span>群聊接入</span><span>风险分级</span><span>闭环处置</span></em>
+                  <i class="tool-arrow"><svg><use href="#i-arrow"/></svg></i>
+                </button>
+              </div>
+            </section>
+
+            <section class="panel queue-panel">
+              <div class="panel-head">
+                <div><h2>需要你的判断</h2><p>按紧急程度排序，点开即可继续处理。</p></div>
+                <button class="text-btn" data-go="radar">全部风险<svg><use href="#i-arrow"/></svg></button>
+              </div>
+              <div id="homeQueue" class="queue-list"></div>
+            </section>
+          </div>
+
+          <aside class="home-side">
+            <section class="panel vital-card">
+              <div class="panel-head compact">
+                <div><h2>社区法治体征</h2><p>基于在办风险与调解数据</p></div>
+                <span class="live-tag"><i></i>实时</span>
+              </div>
+              <div class="vital-main">
+                <div class="vital-ring" id="vitalRing">
+                  <div class="ring-core"><b id="vitalScore">100</b><span>健康指数</span></div>
+                </div>
+                <div class="vital-copy">
+                  <strong id="vitalLabel">平稳 · 安宁</strong>
+                  <p id="vitalNote">社区暂无风险事件。今天的平安，就是最好的工作成果。</p>
+                </div>
+              </div>
+              <div class="vital-breakdown" id="vitalBreakdown"></div>
+              <div class="vital-spark"><span class="spark-label">近 7 日法治体征</span><svg id="vitalSpark" viewBox="0 0 280 44" preserveAspectRatio="none"></svg></div>
+            </section>
+
+            <section class="panel watch-card">
+              <div class="watch-head">
+                <span class="bot-avatar"><svg><use href="#i-bot"/></svg></span>
+                <div><b id="watchTitle">小律静候佳音</b><span id="watchSub">尚未接入业主群</span></div>
+                <span class="live-tag" id="watchLive"><i></i>OFF</span>
+              </div>
+              <div class="watch-body">
+                <div class="watch-risk peace" id="watchRiskRow"><span class="risk-dot"></span><div><b id="watchRiskTitle">今日社区平安祥和</b><span id="watchRiskMeta">暂无风险事件 · 小律待接入</span></div></div>
+                <p id="watchRiskText">愿邻里和顺，诸事安宁。接入业主群后，小律会安静值守。</p>
+              </div>
+              <div class="watch-foot">
+                <span>今日已识别 <b id="watchCount">4</b> 条</span>
+                <button class="text-btn" data-go="radar">进入雷达<svg><use href="#i-arrow"/></svg></button>
+              </div>
+            </section>
+          </aside>
+        </div>
+
+        <div class="home-bottom">
+          <section class="panel activity-panel">
+            <div class="panel-head">
+              <div><h2>最近留痕</h2><p>调解、答疑、文书与风险处置都在这里汇合。</p></div>
+              <span class="panel-note">今天</span>
+            </div>
+            <div id="activityList" class="activity-list"></div>
+          </section>
+          <section class="panel trend-panel">
+            <div class="panel-head">
+              <div><h2>本周调解与风险</h2><p>本周实际留痕统计，不做虚构对比。</p></div>
+              <span class="delta" id="trendDelta">暂无数据</span>
+            </div>
+            <div class="trend-chart" id="trendChart"></div>
+            <div class="trend-foot"><span>本周留痕 <b>0</b> 条</span><span>调解 <b>0</b> 起</span><span>风险 <b>0</b> 条</span></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ================= 三方调解 ================= -->
+      <section class="view" id="view-mediate" data-view="mediate">
+        <div class="page-head module-head">
+          <div class="head-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span>02 / 三方调解模拟器</p>
+            <h1>把最难听的话，先在这里说完。</h1>
+            <p class="lede">申请人、被申请人、调解员同台推演。策略会影响情绪、信任与让步区间——先看结果，再回到真实的调解桌。</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-ghost" id="medReset"><svg><use href="#i-refresh"/></svg>重置推演</button>
+            <button class="btn btn-primary" id="medAuto"><svg><use href="#i-play"/></svg>自动推演</button>
+          </div>
+        </div>
+
+        <div class="med-layout">
+          <aside class="panel med-setup">
+            <div class="setup-head"><span class="step-no">01</span><b>直接填写案件</b><em>自动匹配模型</em></div>
+            <label class="field"><span>案情简述 <em>*</em></span><textarea id="medBrief" rows="6" placeholder="把时间、地点、起因、经过和争议金额写清楚即可，例如：业主因电梯频繁故障拒缴物业费，物业申请调解……"></textarea></label>
+            <div class="field-row">
+              <label class="field"><span>申请人</span><input id="medAName" placeholder="姓名或单位" /></label>
+              <label class="field"><span>被申请人</span><input id="medBName" placeholder="姓名或单位" /></label>
+            </div>
+            <div class="field">
+              <span>对抗强度</span>
+              <div class="seg" id="tensionSeg">
+                <button type="button" data-tension="low">平和</button>
+                <button type="button" data-tension="mid" class="active">紧张</button>
+                <button type="button" data-tension="high">对立</button>
+              </div>
+            </div>
+            <p class="setup-note"><svg><use href="#i-spark"/></svg>不需要选择纠纷类型。系统会根据案情自动匹配调解模型、争议焦点与法律依据。</p>
+            <div class="setup-tools"><button type="button" class="text-btn" id="medSample">载入示例案情<svg><use href="#i-arrow"/></svg></button><span>仅作格式参考</span></div>
+            <button class="btn btn-primary btn-block" id="medStart">进入调解庭<svg><use href="#i-arrow"/></svg></button>
+          </aside>
+
+          <section class="panel med-stage">
+            <header class="stage-head">
+              <div class="case-title">
+                <span class="case-mark"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span>
+                <div><b id="medCaseName">物业服务合同纠纷</b><span id="medCaseSub">幸福里社区人民调解委员会 · 不公开调解</span></div>
+              </div>
+              <div class="stage-state">
+                <span class="state-pill" id="medStageStatus"><i></i>等待开始</span>
+                <span class="round-pill" id="medRound">第 0 轮</span>
+              </div>
+            </header>
+            <div class="party-strip" id="partyStrip"></div>
+            <div class="law-strip" id="lawStrip"></div>
+            <div class="med-stream" id="medStream">
+              <div class="empty-stage">
+                <span class="empty-mark"><svg viewBox="0 0 24 24"><use href="#i-scale"/></svg></span>
+                <b>三方推演将在这里展开</b>
+                <p>左侧填写案情并进入调解庭。<br/>建议先共情、再释法，最后才谈方案。</p>
+              </div>
+            </div>
+            <div class="med-dock" id="medDock">
+              <div class="dock-head"><b>选择本轮策略</b><span id="medDockHint">共 3 轮 · 先降温再谈方案</span></div>
+              <div class="strategy-grid" id="strategyGrid"></div>
+              <div class="proposal-dock" id="proposalDock" hidden></div>
+            </div>
+          </section>
+
+          <aside class="med-intel">
+            <section class="panel intel-card">
+              <div class="panel-head compact"><div><h2>推演态势</h2><p>实时计算，非最终结果</p></div><span class="live-tag"><i></i>LIVE</span></div>
+              <div class="prob-block">
+                <div class="prob-main"><b id="medProb">38</b><span>%</span><em>和解概率</em><span class="delta" id="medProbDelta">—</span></div>
+                <div class="prob-bar"><i id="medProbBar" style="width:38%"></i><span class="prob-mark"></span></div>
+                <div class="prob-scale"><span>对抗</span><span>可达成协议</span></div>
+              </div>
+              <div class="zopa-block">
+                <div class="zopa-head"><span>方案间距</span><b id="zopaLabel">尚未开始</b></div>
+                <div class="zopa-track" id="zopaBar"><span class="zopa-fill"></span><i class="zopa-pin pin-a"></i><i class="zopa-pin pin-b"></i></div>
+                <div class="zopa-foot"><span id="zopaA">甲方 —</span><span id="zopaB">乙方 —</span></div>
+              </div>
+              <div class="readout" id="medReading"></div>
+            </section>
+
+            <section class="panel intel-card">
+              <div class="panel-head compact"><div><h2>争议焦点</h2><p>权重影响方案优先级</p></div></div>
+              <div id="medIssues" class="issue-list"></div>
+            </section>
+
+            <div class="risk-tip" id="medRiskTip"><svg><use href="#i-alert"/></svg><p>开始推演后，这里会给出实时的节奏提醒。</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= 私人法律顾问 ================= -->
+      <section class="view" id="view-advisor" data-view="advisor">
+        <div class="page-head module-head">
+          <div class="head-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span>03 / 私人法律顾问</p>
+            <h1>把法律说清楚，也把感受接得住。</h1>
+            <p class="lede">需要被理解时，打开「情绪安抚」，小律会先回应感受再讲法律；只需要结论时，切换到专业模式，直接给判断、依据和行动清单。</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-ghost" id="advExport"><svg><use href="#i-download"/></svg>导出咨询记录</button>
+            <button class="btn btn-ghost" id="advClear"><svg><use href="#i-refresh"/></svg>新对话</button>
+          </div>
+        </div>
+
+        <div class="adv-layout">
+          <section class="panel adv-chat">
+            <header class="adv-head">
+              <span class="bot-avatar lg"><svg><use href="#i-bot"/></svg></span>
+              <div class="adv-title"><b>小律 · 私人法律顾问</b><span>基层法律服务工作站 · 本地知识引擎 7×24 在线</span></div>
+              <div class="adv-head-tags"><button type="button" class="soft-tag" id="advModeTag" title="点击切换情绪安抚"><i></i>情绪安抚 · 开</button><span class="soft-tag">13 类纠纷</span></div>
+            </header>
+            <div class="adv-stream" id="advStream"></div>
+            <div class="adv-quick" id="advQuick"></div>
+            <form class="adv-composer" id="advForm">
+              <textarea id="advInput" rows="1" placeholder="把遇到的事说给小律听，越具体越好…"></textarea>
+              <button class="send-btn" type="submit" aria-label="发送"><svg><use href="#i-send"/></svg></button>
+            </form>
+            <p class="adv-disclaimer">小律提供的是普法参考，不替代执业律师意见。涉及人身安全，请先拨打 110。</p>
+          </section>
+
+          <aside class="adv-side">
+            <section class="panel soothe-card" id="sootheCard">
+              <div class="soothe-head">
+                <div><h2>情绪安抚</h2><p>沟通方式由你决定</p></div>
+                <label class="switch" title="开启 / 关闭情绪安抚"><input type="checkbox" id="sootheToggle" checked /><i></i></label>
+              </div>
+              <p class="soothe-desc" id="sootheDesc">开启后，小律会先回应你的感受，再给法律建议；关闭则直接进入专业分析。</p>
+              <div class="soothe-modes" id="sootheModes">
+                <button type="button" class="active" data-soothe-mode="on">共情模式</button>
+                <button type="button" data-soothe-mode="off">专业模式</button>
+              </div>
+            </section>
+
+            <section class="panel safe-card" id="advSafety" hidden>
+              <div class="safe-head"><svg><use href="#i-alert"/></svg><b>安全优先</b></div>
+              <p id="advSafetyText"></p>
+              <div class="safe-actions"><a href="tel:110">拨打 110</a><a href="tel:12338">妇联 12338</a></div>
+            </section>
+
+            <section class="panel side-card">
+              <div class="panel-head compact"><div><h2>本次引用</h2><p>与问题直接相关的条文</p></div></div>
+              <div id="advLaws" class="law-list slim"><p class="muted-line">提问后自动关联相关条文。</p></div>
+            </section>
+
+            <section class="panel side-card">
+              <div class="panel-head compact"><div><h2>相似案例</h2><p>本社区真实处置口径</p></div><span class="count">社区</span></div>
+              <div id="advCases" class="case-list"><p class="muted-line">选择一个话题后显示。</p></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= 文书生成 ================= -->
+      <section class="view" id="view-docs" data-view="docs">
+        <div class="page-head module-head">
+          <div class="head-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span>04 / 法律文书生成</p>
+            <h1>把调解桌上的共识，变成能签字的文书。</h1>
+            <p class="lede">六类基层常用文书。要素缺什么、履行期限是否明确、法条是否引用，右侧实时校验。</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-ghost" id="docDrafts"><svg><use href="#i-folder"/></svg>草稿<span class="count-badge" id="docDraftCount">0</span></button>
+            <button class="btn btn-ghost" id="docNew"><svg><use href="#i-plus"/></svg>新建</button>
+          </div>
+        </div>
+
+        <div class="docs-layout">
+          <aside class="panel doc-form-panel">
+            <div class="setup-head"><span class="step-no">01</span><b>选择文书类型</b><em id="docTypeCode">LT-MED</em></div>
+            <div class="doc-type-grid" id="docTypeTabs"></div>
+            <div class="setup-sep"><span>02</span><b>填写要素</b><em id="docFieldCount">0 / 10</em></div>
+            <div class="doc-form" id="docForm"></div>
+            <div class="doc-form-actions">
+              <button class="btn btn-ghost btn-sm" id="docSample">载入示例</button>
+              <button class="btn btn-ghost btn-sm" id="docFromMed">从调解带入</button>
+              <button class="btn btn-ghost btn-sm" id="docClauses">条款库</button>
+              <button class="btn btn-ghost btn-sm" id="docClear">清空</button>
+            </div>
+            <button class="btn btn-primary btn-block" id="docGenerate"><svg><use href="#i-spark"/></svg>生成并校验文书</button>
+            <p class="form-note">草稿自动保存在本机。文书为辅助起草，需由承办人复核事实与条款后使用；导出 .doc 或打印 PDF 时仅输出右侧正文。</p>
+          </aside>
+
+          <section class="doc-preview">
+            <div class="doc-toolbar">
+              <div class="score-wrap">
+                <div class="score-ring" id="docScoreRing"><b id="docScore">0</b><span>%</span></div>
+                <div class="score-copy"><b>要素完整度</b><span id="docScoreText">填写关键要素后自动校验</span></div>
+              </div>
+              <div class="doc-meta-pills"><span id="docStruct">结构 —</span><span id="docLawPill">法条 —</span><span id="docTerm">术语 —</span></div>
+              <div class="doc-tools">
+                <button class="icon-btn" id="docCopy" title="复制全文"><svg><use href="#i-copy"/></svg></button>
+                <button class="icon-btn" id="docDownload" title="下载 .doc"><svg><use href="#i-download"/></svg></button>
+                <button class="icon-btn" id="docPrint" title="打印 / PDF"><svg><use href="#i-print"/></svg></button>
+                <button class="btn btn-primary btn-sm" id="docSave"><svg><use href="#i-save"/></svg>保存草稿</button>
+              </div>
+            </div>
+            <div class="validate-bar" id="docValidate"><span class="ok"><svg><use href="#i-check"/></svg>尚未开始填写</span></div>
+            <div class="paper-scroll" id="paperScroll">
+              <article class="doc-paper" id="docPaper"></article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ================= 社区风险雷达 ================= -->
+      <section class="view" id="view-radar" data-view="radar">
+        <div class="page-head module-head">
+          <div class="head-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span>05 / 社区风险雷达</p>
+            <h1>左边是生活，右边是治理。</h1>
+            <p class="lede">小机器人「小律」以群助手身份接入业主群，只读取公开群消息，实时识别设施、消防、邻里、物业、诈骗与公共秩序风险。</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-ghost" id="radarNewGroup"><svg><use href="#i-wechat"/></svg>接入新群</button>
+            <button class="btn btn-primary" id="radarSimulate"><svg><use href="#i-plus"/></svg>模拟一条新消息</button>
+          </div>
+        </div>
+
+        <div class="radar-stats" id="radarStats"></div>
+
+        <div class="radar-layout">
+          <section class="panel group-panel">
+            <header class="group-head">
+              <span class="group-avatar" id="groupAvatar">幸</span>
+              <div class="group-title"><b id="groupTitle">尚未接入业主群</b><span id="groupMeta"><i class="pulse-dot"></i>接入后开始监测公开群消息</span></div>
+              <div class="group-head-right">
+                <span class="bot-inline" id="groupBotStatus"><svg><use href="#i-bot"/></svg>小律待接入</span>
+                <label class="switch" title="自动巡群"><input type="checkbox" id="radarToggle" disabled /><i></i></label>
+              </div>
+            </header>
+            <div class="group-feed" id="groupFeed"></div>
+            <div class="group-typing" id="groupTyping" hidden><span>小律正在研判</span><i></i><i></i><i></i></div>
+            <div class="group-composer">
+              <button class="composer-tool" id="radarPaste" title="粘贴分析"><svg><use href="#i-doc"/></svg></button>
+              <form class="composer-form" id="groupForm">
+                <input id="groupInput" placeholder="模拟一条群消息，小律会实时研判…" autocomplete="off" />
+                <button class="send-btn small" type="submit" aria-label="发送"><svg><use href="#i-send"/></svg></button>
+              </form>
+              <button class="composer-tool" id="radarReport" title="生成周报"><svg><use href="#i-book"/></svg></button>
+            </div>
+            <p class="privacy-note"><svg><use href="#i-lock"/></svg>小律仅分析群内公开消息，不读取私聊、不获取成员手机号。</p>
+          </section>
+
+          <aside class="radar-side">
+            <section class="panel risk-index-card">
+              <div class="panel-head compact"><div><h2>社区风险指数</h2><p>刚刚更新 · 6 类风险模型</p></div><span class="live-tag"><i></i>LIVE</span></div>
+              <div class="risk-index-main">
+                <div class="risk-gauge" id="riskGauge"><div class="gauge-core"><b id="riskIndex">44</b><span>中等风险</span></div><svg viewBox="0 0 140 84"><path d="M12 74a58 58 0 0 1 116 0" fill="none" stroke="#e9e1d2" stroke-width="9" stroke-linecap="round"/><path id="riskArc" d="M12 74a58 58 0 0 1 116 0" fill="none" stroke="url(#riskGrad)" stroke-width="9" stroke-linecap="round" stroke-dasharray="182" stroke-dashoffset="100"/><defs><linearGradient id="riskGrad" x1="0" x2="1"><stop offset="0" stop-color="#2F6B5A"/><stop offset=".55" stop-color="#C9A45B"/><stop offset="1" stop-color="#B3453D"/></linearGradient></defs></svg><div class="gauge-scale"><span>0 平稳</span><span>50 关注</span><span>100 危急</span></div></div>
+                <div class="risk-counts" id="riskCounts"></div>
+              </div>
+              <div class="risk-cats" id="riskCats"></div>
+            </section>
+
+            <section class="panel risk-panel">
+              <div class="risk-panel-head">
+                <div class="panel-head compact"><div><h2>风险事件</h2><p id="riskSummary">按时间倒序 · 4 条待处置</p></div></div>
+                <div class="risk-tabs" id="riskTabs">
+                  <button class="active" data-filter="pending">待处置</button>
+                  <button data-filter="dispatched">处置中</button>
+                  <button data-filter="closed">已闭环</button>
+                  <button data-filter="all">全部</button>
+                </div>
+              </div>
+              <div class="risk-list" id="riskList"></div>
+              <div class="risk-detail" id="riskDetail" hidden></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <nav class="mobile-nav" aria-label="移动端导航">
+    <a data-route="home" class="active"><svg><use href="#i-home"/></svg><span>总览</span></a>
+    <a data-route="mediate"><svg><use href="#i-scale"/></svg><span>调解</span></a>
+    <a data-route="advisor"><svg><use href="#i-chat"/></svg><span>顾问</span></a>
+    <a data-route="docs"><svg><use href="#i-doc"/></svg><span>文书</span></a>
+    <a data-route="radar"><svg><use href="#i-radar"/></svg><span>雷达</span></a>
+  </nav>
+</div>
+
+<div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+<div class="modal-root" id="modalRoot" hidden></div>
+
+<div class="palette" id="palette" hidden>
+  <div class="palette-backdrop" data-close-palette></div>
+  <div class="palette-box">
+    <div class="palette-search"><svg><use href="#i-search"/></svg><input id="paletteInput" placeholder="搜索功能或快捷操作…" /><kbd>ESC</kbd></div>
+    <div class="palette-results" id="paletteResults"></div>
+    <div class="palette-foot"><span><kbd>↵</kbd> 打开</span><span><kbd>↑</kbd><kbd>↓</kbd> 选择</span><span><kbd>ESC</kbd> 关闭</span></div>
+  </div>
+</div>
+
+<script src="assets/legal-citations.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
